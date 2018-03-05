@@ -1,0 +1,22 @@
+{
+    "name":"CFWheels LinkToDefaultTitle",
+    "version":"0.0.1",
+    "author":"Landon Fabbricion",
+    "location":"lfabbric/cfwheels-linktodefaulttitle#v0.0.1",
+    "directory":"/plugins/",
+    "createPackageDirectory":true,
+    "packageDirectory":"linktodefaultitle",
+    "slug":"cfwheels-link-to-default-title",
+    "type":"cfwheels-plugins",
+    "homepage":"https://github.com/lfabbric/cfwheels-linktodefaulttitle",
+    "shortDescription":"CFWheels 2.x Plugin Automatically places the default title when using the linkTo() method",
+    "keywords":"linkTo",
+    "private":false,
+    "scripts":{
+        "postVersion":"package set location='lfabbric/cfwheels-linktodefaulttitle#v`package version`'",
+        "postPublish":"!git push --follow-tags",
+        "patch-release":"bump --patch && publish",
+        "minor-release":"bump --minor && publish",
+        "major-release":"bump --major && publish"
+    }
+}
