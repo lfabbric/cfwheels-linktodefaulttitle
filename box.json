@@ -5,7 +5,7 @@
     "location":"lfabbric/cfwheels-linktodefaulttitle#v0.0.1",
     "directory":"/plugins/",
     "createPackageDirectory":true,
-    "packageDirectory":"linktodefaultitle",
+    "packageDirectory":"linktodefaulttitle",
     "slug":"cfwheels-link-to-default-title",
     "type":"cfwheels-plugins",
     "homepage":"https://github.com/lfabbric/cfwheels-linktodefaulttitle",
