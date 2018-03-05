@@ -22,7 +22,7 @@ before_script:
   - box server start lucee5
 # Type should be the name of the plugin | servername should reflect the server we've just started
 script: >
-  testResults="$(box wheels test type=linkto servername=lucee5)";
+  testResults="$(box wheels test type=linktodefaulttitle servername=lucee5)";
   echo "$testResults";
   if ! grep -i "\Tests Complete: All Good!" <<< $testResults;  then exit 1; fi
 notifications:
