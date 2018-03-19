@@ -32,14 +32,16 @@ config/routes.cfm ---------------------
     .get(name="about", pattern="/about", to="Pages##about", linkToText="value1")
 ```
 
-** Parameters **
+**Parameters**
+
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 enabledFor | `string` | false |  | Set the default text for the linkTo method.
 
+-----
+
 ## Included Functions
 
------
 ### $ltdt_getRoute()
 Returns the route name based on the action/controller provided.
 
@@ -59,17 +61,19 @@ config/routes.cfm
     .get(name="terms", pattern="/terms", to="Pages##terms", linkToText="Terms and Conditions")
 
 //some controller or view
-    $ltdt_getRoute(action="terms"); // return terms
+    $ltdt_getRoute(action="terms"); // return terms (when on the pages controller)
     $ltdt_getRoute(action="terms", controller="pages"); // return terms
     $ltdt_getRoute(route="terms"); // return terms
 ```
 
 **Parameters**
+
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 route | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
 action | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
 controller | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
+
 ----
 
 ### $ltdt_getRequestedRouteParam()
@@ -88,11 +92,12 @@ config/routes.cfm
     );
 
 //some controller or view
-    $ltdt_getRequestedRouteParam("terms", "linkToText"); // will return "Terms and Conditions"
-    $ltdt_getRequestedRouteParam("terms", "someAbstractVariable"); // will return 15
+    $ltdt_getRequestedRouteParam(route = "terms", paramVariable = "linkToText"); // will return "Terms and Conditions"
+    $ltdt_getRequestedRouteParam(route = "terms", paramVariable = "someAbstractVariable"); // will return 15
 ```
 
 **Parameters**
+
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 route | `string` | true |  | Name of a route that you have configured in config/routes.cfm.
