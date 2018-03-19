@@ -1,16 +1,21 @@
-# Plugin: LinkToDefaultTitle
+# Plugin: LinkTo() Show Default Title
 
 ## Purpose
 
-LInkToDefaultTitle is feature to overload the linkTo mehtod to automatically display the routes pageTitle, if available, otherwise return the default operation and show the url.
+This helper plugin will automatically display the page title when using the linkTo() function.
 
-## Setup
+## Usage
 
-Copy LinkToDefaultTitle-1.0.1.zip file to your plugins folder and reload your application.
+```html
+#linkTo(route = "terms")#
+
+// results
+<a href="/terms">Terms and Conditions</a>
+```
 
 ## Configuration
 
-Within the config/routes.cfm page, added a new parameter to the addRoute method called enabledfor.
+Within the config/routes.cfm page, added a new parameter to the addRoute method called linkToText.
 
 ```java
 config/routes.cfm ---------------------
@@ -22,32 +27,23 @@ config/routes.cfm ---------------------
         linkToText="value1" // new param
     );
 
-    or
+    // or
 
     .get(name="about", pattern="/about", to="Pages##about", linkToText="value1")
 ```
 
-```java
-config/settings.cfm
-    // you can set defaults for the addRoute
-    set(
-        functionName="addRoute",
-        linkToText="value1"
-    );
-```
-
-#### Parameters
+** Parameters **
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 enabledFor | `string` | false |  | Set the default text for the linkTo method.
 
-## Utilities
+## Included Functions
 
 -----
 ### $ltdt_getRoute()
 Returns the route name based on the action/controller provided.
 
-#### Usage
+**Usage**
 ```java
 config/routes.cfm
     addRoute(
@@ -68,18 +64,18 @@ config/routes.cfm
     $ltdt_getRoute(route="terms"); // return terms
 ```
 
-#### Parameters
+**Parameters**
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 route | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
 action | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
 controller | `string` | false |  | See documentation for [linkTo]("https://guides.cfwheels.org/docs/linkto")
 ----
+
 ### $ltdt_getRequestedRouteParam()
-Returns a variable defined within the route or set as a default value for the route.
+Returns a variable defined for a specific route.
 
-
-#### Usage
+**Usage**
 ```java
 config/routes.cfm
     addRoute(
@@ -96,9 +92,8 @@ config/routes.cfm
     $ltdt_getRequestedRouteParam("terms", "someAbstractVariable"); // will return 15
 ```
 
-#### Parameters
+**Parameters**
 Parameter | Type | Required | Default | Description
 --- | --- | --- | --- | ---
 route | `string` | true |  | Name of a route that you have configured in config/routes.cfm.
 paramVariable | `string` | true |  | Name of a variable you have defined within your route
-----
