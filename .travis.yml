@@ -2,6 +2,10 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
+env:
+ - ENGINE=lucee@5
+ - ENGINE=lucee@4
+ - ENGINE=adobe@2016
 before_install:
   # Get Commandbox
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
@@ -19,10 +23,10 @@ install:
   - box install lfabbric/cfwheels-linktodefaulttitle
 before_script:
   # Master branch has a bunch of server.jsons we can use: lucee4 | lucee5 | cf10 | cf11 | cf2016
-  - box server start lucee5
+  - box server start cfengine=$ENGINE port=8500
 # Type should be the name of the plugin | servername should reflect the server we've just started
 script: >
-  testResults="$(box wheels test type=linktodefaulttitle servername=lucee5)";
+  testResults="$(box wheels test type=linktodefaulttitle)";
   echo "$testResults";
   if ! grep -i "\Tests Complete: All Good!" <<< $testResults;  then exit 1; fi
 notifications:
