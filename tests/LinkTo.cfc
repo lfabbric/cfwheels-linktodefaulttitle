@@ -87,13 +87,13 @@ component extends="wheels.Test"  hint="Unit Tests" {
     }
 
     function test_get_route_by_action_and_controller() {
-        routeName = "AuthenticateUser"
+        routeName = "AuthenticateUser";
         returnedRouteName = c.$ltdt_getRoute(action="authenticate", controller="utilities");
         assert("returnedRouteName.contains(routeName)");
     }
 
     function test_get_route_by_action_from_non_pages_controller() {
-        routeName = "AuthenticateUser"
+        routeName = "AuthenticateUser";
         returnedRouteName = c.$ltdt_getRoute(action="authenticate");
         assert("!returnedRouteName.contains(routeName)");
     }
